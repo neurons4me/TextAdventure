@@ -1,0 +1,11 @@
+/home/adam/Documents/Projects/TextAdventure/bin/Debug/netcoreapp2.2/TextAdventure.deps.json
+/home/adam/Documents/Projects/TextAdventure/bin/Debug/netcoreapp2.2/TextAdventure.runtimeconfig.json
+/home/adam/Documents/Projects/TextAdventure/bin/Debug/netcoreapp2.2/TextAdventure.runtimeconfig.dev.json
+/home/adam/Documents/Projects/TextAdventure/bin/Debug/netcoreapp2.2/TextAdventure.dll
+/home/adam/Documents/Projects/TextAdventure/bin/Debug/netcoreapp2.2/TextAdventure.pdb
+/home/adam/Documents/Projects/TextAdventure/obj/Debug/netcoreapp2.2/TextAdventure.csprojAssemblyReference.cache
+/home/adam/Documents/Projects/TextAdventure/obj/Debug/netcoreapp2.2/TextAdventure.csproj.CoreCompileInputs.cache
+/home/adam/Documents/Projects/TextAdventure/obj/Debug/netcoreapp2.2/TextAdventure.AssemblyInfoInputs.cache
+/home/adam/Documents/Projects/TextAdventure/obj/Debug/netcoreapp2.2/TextAdventure.AssemblyInfo.cs
+/home/adam/Documents/Projects/TextAdventure/obj/Debug/netcoreapp2.2/TextAdventure.dll
+/home/adam/Documents/Projects/TextAdventure/obj/Debug/netcoreapp2.2/TextAdventure.pdb
