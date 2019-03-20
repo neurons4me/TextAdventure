@@ -11,7 +11,7 @@ public Int16 location {get; set;}
 
 //public List<string> playerInventory {get; set;}
 
-public List<string> playerInventory { get; set; } = new List<string>();
+public List<Item> playerInventory { get; set; } = new List<Item>();
 
 public String name {get ; set;}
 
@@ -23,9 +23,13 @@ public Player()
 
     location = 1;
     name = "Default Dave";
-    //List<string> playerInventory = new List<string>();
-    playerInventory.Add("rusty nail");
-    playerInventory.Add("soggy flannel hat");
+    
+    Item item01 = new Item("rusty nail");
+    Item item02 = new Item("soggy flannel hat");
+
+    playerInventory.Add(item01);
+    playerInventory.Add(item02);
+    
     hitPoints = 100;
 
 }
@@ -36,9 +40,11 @@ public Player(string customName)
 
     location = 1;
     name = customName;
-    //List<string> playerInventory = new List<string>();
-    playerInventory.Add("rusty nail");
-    playerInventory.Add("soggy flannel hat");
+    Item item01 = new Item("rusty nail");
+    Item item02 = new Item("soggy flannel hat");
+
+    playerInventory.Add(item01);
+    playerInventory.Add(item02);
     hitPoints = 100;
 
 }
