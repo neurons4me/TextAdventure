@@ -5,8 +5,6 @@ using System.Collections.Generic;
 namespace TextAdventure
 {
 
-
-// TODO refactor items to objects from list elsewhere when you build this out
 public class Item
 {
 
