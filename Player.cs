@@ -47,16 +47,123 @@ public Player(string customName)
 
 }
 
-public static void movePlayer(Int16 direction)
+public void movePlayer(Int16 chosenDirection)
 {
 
-    // move player from main can be moved here
-    // references to currentPlayer in that code can be changed to references to 'this'
     // that code does not presently handle the fact that an entire room does not have to be locked or hidden from all sides
     // each room should have a sub property to account for sides being locked or not
     // could be as simple as having isLocked and isHidden in 4 element arrays and accessing the appropriate one for each check
-    // that is however not very readable so a sep
+    // probably the best way to aproach it would be to have door be its own model that knows what rooms it belongs to and it's status on either side
+    // If I do it that way I'll have to do some logic rewrite below but this way allows for doors that are hidden or locked on only one side
+
+
+            switch (chosenDirection)
+            {
+                case 1:
+                
+
+                if (currentRoom.northNeighbor != null && currentRoom.northNeighbor.isHidden != true)
+                {
+                if (currentRoom.northNeighbor.isLocked != true)
+                {
+                    currentRoom = currentRoom.northNeighbor;
+                    Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
+                }
+                else
+                    {
+                        Console.WriteLine("The door is locked buddy... pall... dude.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("There is no exit there");
+                }
+
+                break;
+
+                case 2:
+                
+
+                if (currentRoom.eastNeighbor != null && currentRoom.eastNeighbor.isHidden != true)
+                {
+                if (currentRoom.eastNeighbor.isLocked != true)
+                {
+
+                    currentRoom = currentRoom.eastNeighbor;
+                    Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
+
+                }
+                else
+                {
+                    Console.WriteLine("The door is locked buddy... pall... dude.");
+                }
+
+                }
+                else
+                {
+                    Console.WriteLine("There is no exit there");
+                }
+
+                break;
+
+                case 3:
+                
+
+                if (currentRoom.southNeighbor != null && currentRoom.southNeighbor.isHidden != true)
+                {
+                if (currentRoom.southNeighbor.isLocked != true)
+                {
+
+                    currentRoom = currentRoom.southNeighbor;
+                    Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
+
+                }
+                else
+                {
+                    Console.WriteLine("The door is locked buddy... pall... dude.");
+                }
+
+                }
+                else
+                {
+                    Console.WriteLine("There is no exit there");
+                }
+
+                break;
+                case 4:
+                
+
+                if (currentRoom.westNeighbor != null && currentRoom.westNeighbor.isHidden != true)
+                {
+                if (currentRoom.westNeighbor.isLocked != true)
+                {
+
+                    currentRoom = currentRoom.westNeighbor;
+                    Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
+
+                }
+                else
+                {
+                    Console.WriteLine("The door is locked buddy... pall... dude.");
+                }
+
+                }
+                else
+                {
+                    Console.WriteLine("There is no exit there");
+                }
+
+                break;
+
+            }
+
+
+
+
 }
+
+
+
 
 public void takeItem(string itemSearchString)
 {

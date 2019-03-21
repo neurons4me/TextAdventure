@@ -71,6 +71,8 @@ namespace TextAdventure
 
             playerOne.takeItem("moldy bread");
 
+            playerOne.movePlayer(1);
+
 
 
             // temp test of the basic function of moving to another room assuming east was selected as movement dirrection
