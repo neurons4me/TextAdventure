@@ -15,6 +15,7 @@ public class Item
     public string itemContext {get; set;}
     public Int16 durability {get; set;}
     public string itemName {get; set;}
+    public bool canPickUp {get; set;}
 
 // TODO probably will need a list of possible actions as a field too
 

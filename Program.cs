@@ -15,7 +15,8 @@ namespace TextAdventure
             
             Item item01 = new Item("the holy hand grenade of antioch");
             Item item02 = new Item("a piece of moldy bread that looks like jesus");
-            item02.itemAliases.Add("a piece of moldy bread that looks like jesus");
+            item02.itemAliases.Add("moldy bread");
+            item02.canPickUp = true;
             Room RoomOne = new Room(false, false, "this is the central room");
             RoomOne.roomInventory.Add(item01);
             RoomOne.roomInventory.Add(item02);
@@ -60,114 +61,122 @@ namespace TextAdventure
 
 
 
-            Room currentRoom = RoomOne;
+            //Room currentRoom = RoomOne;
+
+            // Set start room for player
+            playerOne.currentRoom = RoomOne;
+
             // Start the main game logic loop here
+
+
+            playerOne.takeItem("moldy bread");
+
 
 
             // temp test of the basic function of moving to another room assuming east was selected as movement dirrection
 
 
-            Int16 chosenDirection = 4;
+            // Int16 chosenDirection = ;
 
-            switch (chosenDirection)
-            {
-                case 1:
+            // switch (chosenDirection)
+            // {
+            //     case 1:
                 
 
-                if (currentRoom.northNeighbor != null && currentRoom.northNeighbor.isHidden != true)
-                {
-                if (currentRoom.northNeighbor.isLocked != true)
-                {
-                    currentRoom = currentRoom.northNeighbor;
-                    Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
-                }
-                else
-                    {
-                        Console.WriteLine("The door is locked buddy... pall... dude.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("There is no exit there");
-                }
+            //     if (currentRoom.northNeighbor != null && currentRoom.northNeighbor.isHidden != true)
+            //     {
+            //     if (currentRoom.northNeighbor.isLocked != true)
+            //     {
+            //         currentRoom = currentRoom.northNeighbor;
+            //         Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
+            //     }
+            //     else
+            //         {
+            //             Console.WriteLine("The door is locked buddy... pall... dude.");
+            //         }
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("There is no exit there");
+            //     }
 
-                break;
+            //     break;
 
-                case 2:
+            //     case 2:
                 
 
-                if (currentRoom.eastNeighbor != null && currentRoom.eastNeighbor.isHidden != true)
-                {
-                if (currentRoom.eastNeighbor.isLocked != true)
-                {
+            //     if (currentRoom.eastNeighbor != null && currentRoom.eastNeighbor.isHidden != true)
+            //     {
+            //     if (currentRoom.eastNeighbor.isLocked != true)
+            //     {
 
-                    currentRoom = currentRoom.eastNeighbor;
-                    Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
+            //         currentRoom = currentRoom.eastNeighbor;
+            //         Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
 
-                }
-                else
-                {
-                    Console.WriteLine("The door is locked buddy... pall... dude.");
-                }
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("The door is locked buddy... pall... dude.");
+            //     }
 
-                }
-                else
-                {
-                    Console.WriteLine("There is no exit there");
-                }
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("There is no exit there");
+            //     }
 
-                break;
+            //     break;
 
-                case 3:
+            //     case 3:
                 
 
-                if (currentRoom.southNeighbor != null && currentRoom.southNeighbor.isHidden != true)
-                {
-                if (currentRoom.southNeighbor.isLocked != true)
-                {
+            //     if (currentRoom.southNeighbor != null && currentRoom.southNeighbor.isHidden != true)
+            //     {
+            //     if (currentRoom.southNeighbor.isLocked != true)
+            //     {
 
-                    currentRoom = currentRoom.southNeighbor;
-                    Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
+            //         currentRoom = currentRoom.southNeighbor;
+            //         Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
 
-                }
-                else
-                {
-                    Console.WriteLine("The door is locked buddy... pall... dude.");
-                }
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("The door is locked buddy... pall... dude.");
+            //     }
 
-                }
-                else
-                {
-                    Console.WriteLine("There is no exit there");
-                }
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("There is no exit there");
+            //     }
 
-                break;
-                case 4:
+            //     break;
+            //     case 4:
                 
 
-                if (currentRoom.westNeighbor != null && currentRoom.westNeighbor.isHidden != true)
-                {
-                if (currentRoom.westNeighbor.isLocked != true)
-                {
+            //     if (currentRoom.westNeighbor != null && currentRoom.westNeighbor.isHidden != true)
+            //     {
+            //     if (currentRoom.westNeighbor.isLocked != true)
+            //     {
 
-                    currentRoom = currentRoom.westNeighbor;
-                    Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
+            //         currentRoom = currentRoom.westNeighbor;
+            //         Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
 
-                }
-                else
-                {
-                    Console.WriteLine("The door is locked buddy... pall... dude.");
-                }
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("The door is locked buddy... pall... dude.");
+            //     }
 
-                }
-                else
-                {
-                    Console.WriteLine("There is no exit there");
-                }
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("There is no exit there");
+            //     }
 
-                break;
+            //     break;
 
-            }
+            // }
 
 
 
@@ -195,32 +204,32 @@ namespace TextAdventure
 
             // player picks up item from room
         
-            Item itemToMove = null;
-            string itemAlias = "a piece of moldy bread that looks like jesus"; // TODO move this to it's own function and have itemAlias as a param
+            // Item itemToMove = null;
+            // string itemAlias = "a piece of moldy bread that looks like jesus"; // TODO move this to it's own function and have itemAlias as a param
             
-            // searches the room inventory list of items for an item that has an alias matching the search term
-            foreach (Item item in currentRoom.roomInventory)
-            {
-                if (item.itemAliases.Contains(itemAlias))
-                {
-                    itemToMove = item;
-                }
-            }
-            // if a valid match was found above and we will remove it from the 
-            if (itemToMove != null)
-            {
+            // // searches the room inventory list of items for an item that has an alias matching the search term
+            // foreach (Item item in currentRoom.roomInventory)
+            // {
+            //     if (item.itemAliases.Contains(itemAlias))
+            //     {
+            //         itemToMove = item;
+            //     }
+            // }
+            // // if a valid match was found above and we will remove it from the 
+            // if (itemToMove != null)
+            // {
 
-            currentRoom.roomInventory.Remove(itemToMove);
-            playerOne.playerInventory.Add(itemToMove);
+            // currentRoom.roomInventory.Remove(itemToMove);
+            // playerOne.playerInventory.Add(itemToMove);
 
-            Console.WriteLine("You have pocketed the " + itemToMove.itemName);
+            // Console.WriteLine("You have pocketed the " + itemToMove.itemName);
 
 
-            }
-            else
-            {
-                Console.WriteLine("I don't understand what you want to pick up");
-            }
+            // }
+            // else
+            // {
+            //     Console.WriteLine("I don't understand what you want to pick up");
+            // }
             
 
 
