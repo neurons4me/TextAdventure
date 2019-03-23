@@ -13,11 +13,15 @@ namespace TextAdventure
             // temporary builders for the first test rooms
             // TODO all of this setup needs to go in a factory method eventually
             
-            Item item01 = new Item("the holy hand grenade of antioch");
-            Item item02 = new Item("a piece of moldy bread that looks like jesus");
-            item02.itemAliases.Add("moldy bread");
+            Item item01 = new Item("hand grenade");
+            Item item02 = new Item("moldy bread");
+            item02.itemAliases.Add("bread");
             item02.canPickUp = true;
-            Room RoomOne = new Room("this is the central room");
+            item01.shortDescription = "the holy Hand Grenade of Antioch!";
+            item02.shortDescription = "a slice of Wonderbread with a mold patch that looks like Jesus Christ!";
+            item01.itemContext = "On the floor in the corner there is";
+            item02.itemContext = "Under a loose floorboard in the middle of the room you see";
+            Room RoomOne = new Room("This is a large central room. The walls are composed of malachite and granite with fine golden veins snaking all around.");
             RoomOne.roomInventory.Add(item01);
             RoomOne.roomInventory.Add(item02);
 
@@ -50,19 +54,23 @@ namespace TextAdventure
             RoomOne.westDoor = DoorOne;
             RoomFive.eastDoor = DoorOne;
             DoorOne.isHiddenFromWest = true;
+            DoorOne.description = "A red wooden door";
 
             Door DoorTwo = new Door(true, RoomThree, RoomOne);
             RoomOne.northDoor = DoorTwo;
             RoomThree.southDoor = DoorTwo;
+            DoorTwo.description = "A blue wooden door";
             
             Door DoorThree = new Door(false ,RoomOne, RoomTwo);
             RoomOne.eastDoor = DoorThree;
             RoomTwo.westDoor = DoorThree;
+            DoorThree.description = "A large iron door";
 
             Door DoorFour = new Door(true ,RoomOne, RoomFour);
             RoomOne.southDoor = DoorFour;
             RoomFour.northDoor = DoorFour;
             DoorFour.isLockedFromNorth = true;
+            DoorFour.description = "A magical shimmering door";
 
             //Room currentRoom = RoomOne;
 
@@ -111,6 +119,10 @@ namespace TextAdventure
             if (playerInput == "reset")
             {
             playerOne.currentRoom = RoomOne;
+            }
+            if (playerInput == "look around")
+            {
+            Console.WriteLine(playerOne.lookAround());
             }
         
         

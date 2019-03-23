@@ -27,6 +27,7 @@ public Int16 barricadeDurabilityFromWest {get; set;}
 public Int16 durability {get; set;}
 public String description {get; set;}
 public bool isOpen {get; set;}
+public List<String> validKeys {get; set;}
 
 
 public Door(bool isNorthSouth ,Room northOrWestRoom ,Room southOrEastRoom)
@@ -77,7 +78,24 @@ public void destroyDoor()
 {
 }
 
+public void openDoor()
+{
+    isOpen = true;
 
+    isLockedFromNorth = false;
+    isLockedFromSouth = false;
+    isHiddenFromNorth = false;
+    isHiddenFromSouth = false;
+    barricadeDurabilityFromNorth = 0;
+    barricadeDurabilityFromSouth = 0;
+    isLockedFromEast = false;
+    isLockedFromWest = false;
+    isHiddenFromEast = false;
+    isHiddenFromWest = false;
+    barricadeDurabilityFromEast = 0;
+    barricadeDurabilityFromWest = 0;
+
+}
 
 }
 

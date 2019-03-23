@@ -48,16 +48,7 @@ public Player(string customName)
 }
 
 public void movePlayer(Int16 chosenDirection)
-{
-
-    // that code does not presently handle the fact that an entire room does not have to be locked or hidden from all sides
-    // each room should have a sub property to account for sides being locked or not
-    // could be as simple as having isLocked and isHidden in 4 element arrays and accessing the appropriate one for each check
-    // probably the best way to aproach it would be to have door be its own model that knows what rooms it belongs to and it's status on either side
-    // If I do it that way I'll have to do some logic rewrite below but this way allows for doors that are hidden or locked on only one side
-
-            //
-            
+{            
             
             switch (chosenDirection)
             {
@@ -68,12 +59,17 @@ public void movePlayer(Int16 chosenDirection)
                 {
                 if (currentRoom.northDoor.isLockedFromSouth != true)
                 {
+                    if (currentRoom.northDoor.isOpen != true)
+                    {
+                    currentRoom.northDoor.openDoor();
+                    Console.WriteLine("You have opened the door.");
+                    }
                     currentRoom = currentRoom.northDoor.northRoom;
-                    Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
+                    Console.WriteLine("You have entered a new room. " + currentRoom.roomDescription);
                 }
                 else
                     {
-                        Console.WriteLine("The door is locked buddy... pall... dude.");
+                        Console.WriteLine("The door is locked.");
                     }
                 }
                 else
@@ -90,7 +86,12 @@ public void movePlayer(Int16 chosenDirection)
                 {
                 if (currentRoom.eastDoor.isLockedFromWest != true)
                 {
-
+                   
+                    if (currentRoom.eastDoor.isOpen != true)
+                    {
+                    currentRoom.eastDoor.openDoor();
+                    Console.WriteLine("You have opened the door. ");
+                    }
                     currentRoom = currentRoom.eastDoor.eastRoom;
                     Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
 
@@ -115,7 +116,13 @@ public void movePlayer(Int16 chosenDirection)
                 {
                 if (currentRoom.southDoor.isLockedFromNorth != true)
                 {
-
+                    
+                    if (currentRoom.southDoor.isOpen != true)
+                    {
+                    currentRoom.southDoor.openDoor();
+                    Console.WriteLine("You have opened the door. ");
+                    }
+                    
                     currentRoom = currentRoom.southDoor.southRoom;
                     Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
 
@@ -139,7 +146,13 @@ public void movePlayer(Int16 chosenDirection)
                 {
                 if (currentRoom.westDoor.isLockedFromEast != true)
                 {
-
+                    if (currentRoom.westDoor.isOpen != true)
+                    {
+                    currentRoom.westDoor.openDoor();
+                    Console.WriteLine("You have opened the door. ");
+                    }
+                    
+                    currentRoom.westDoor.openDoor();
                     currentRoom = currentRoom.westDoor.westRoom;
                     Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
 
@@ -201,7 +214,27 @@ Item itemToMove = null;
 
 }
 
+public String lookAround()
+// TODO needs to gracefully handle null objects
+// TODO needs better formatting for the output
+
+{
+    String itemDescriptions = "";
+
+    foreach (Item item in this.currentRoom.roomInventory)
+    {
+        itemDescriptions = item.itemContext + " " + item.shortDescription;
+    }
+    
+    
+    String doorsDescription = this.currentRoom.combinedDoorsDescription();
+
+    String outputString = this.currentRoom.roomDescription + itemDescriptions + doorsDescription;
 
 
+
+    
+    return outputString;
+}
 }
 }
