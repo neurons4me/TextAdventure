@@ -56,17 +56,19 @@ public void movePlayer(Int16 chosenDirection)
     // probably the best way to aproach it would be to have door be its own model that knows what rooms it belongs to and it's status on either side
     // If I do it that way I'll have to do some logic rewrite below but this way allows for doors that are hidden or locked on only one side
 
-
+            //
+            
+            
             switch (chosenDirection)
             {
                 case 1:
                 
 
-                if (currentRoom.northNeighbor != null && currentRoom.northNeighbor.isHidden != true)
+                if (currentRoom.northDoor != null && currentRoom.northDoor.isHiddenFromSouth != true)
                 {
-                if (currentRoom.northNeighbor.isLocked != true)
+                if (currentRoom.northDoor.isLockedFromSouth != true)
                 {
-                    currentRoom = currentRoom.northNeighbor;
+                    currentRoom = currentRoom.northDoor.northRoom;
                     Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
                 }
                 else
@@ -84,12 +86,12 @@ public void movePlayer(Int16 chosenDirection)
                 case 2:
                 
 
-                if (currentRoom.eastNeighbor != null && currentRoom.eastNeighbor.isHidden != true)
+                if (currentRoom.eastDoor != null && currentRoom.eastDoor.isHiddenFromWest != true)
                 {
-                if (currentRoom.eastNeighbor.isLocked != true)
+                if (currentRoom.eastDoor.isLockedFromWest != true)
                 {
 
-                    currentRoom = currentRoom.eastNeighbor;
+                    currentRoom = currentRoom.eastDoor.eastRoom;
                     Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
 
                 }
@@ -109,12 +111,12 @@ public void movePlayer(Int16 chosenDirection)
                 case 3:
                 
 
-                if (currentRoom.southNeighbor != null && currentRoom.southNeighbor.isHidden != true)
+                if (currentRoom.southDoor != null && currentRoom.southDoor.isHiddenFromNorth != true)
                 {
-                if (currentRoom.southNeighbor.isLocked != true)
+                if (currentRoom.southDoor.isLockedFromNorth != true)
                 {
 
-                    currentRoom = currentRoom.southNeighbor;
+                    currentRoom = currentRoom.southDoor.southRoom;
                     Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
 
                 }
@@ -133,12 +135,12 @@ public void movePlayer(Int16 chosenDirection)
                 case 4:
                 
 
-                if (currentRoom.westNeighbor != null && currentRoom.westNeighbor.isHidden != true)
+                if (currentRoom.westDoor != null && currentRoom.westDoor.isHiddenFromEast != true)
                 {
-                if (currentRoom.westNeighbor.isLocked != true)
+                if (currentRoom.westDoor.isLockedFromEast != true)
                 {
 
-                    currentRoom = currentRoom.westNeighbor;
+                    currentRoom = currentRoom.westDoor.westRoom;
                     Console.WriteLine("You have entered a new room." + currentRoom.roomDescription);
 
                 }
