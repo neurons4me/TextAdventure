@@ -27,7 +27,7 @@ public Int16 barricadeDurabilityFromWest {get; set;}
 public Int16 durability {get; set;}
 public String description {get; set;}
 public bool isOpen {get; set;}
-public List<String> validKeys {get; set;}
+public List<Item> validKeys {get; set;}
 
 
 public Door(bool isNorthSouth ,Room northOrWestRoom ,Room southOrEastRoom)
@@ -72,6 +72,25 @@ public Door(bool isNorthSouth ,Room northOrWestRoom ,Room southOrEastRoom)
 
 
 
+}
+
+public String unlockDoor(Item putativeKey)
+{
+    // when Player method calls this make sure to handle the door not being locked at all there... Door does not readily know which direction it is being tried from so it is best handled in Player since it knows that
+    // this method assumes it is receiving a valid, non-null Item that may or may not unlock the door; it returns a string with the output and changes the state of the door if valid
+
+    String outputResponse = "You couldn't unlock the door with the " + putativeKey.itemName + ".";
+    
+    if (validKeys.Contains(putativeKey))
+    {
+    isLockedFromNorth = false;
+    isLockedFromSouth = false;
+    isLockedFromEast = false;
+    isLockedFromWest = false;
+    outputResponse = "You have unlocked the door!"; 
+    }
+
+    return outputResponse;
 }
 
 public void destroyDoor()

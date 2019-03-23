@@ -22,5 +22,6 @@ An OOP Engine for Text Based Adventure Games
 * Implement Event class to handle world events. Instances will be tracked and handled by World. Will have props and methods to allow implementation of events firing on a basis of mtth (mean time to happen) with a min and max time to happen options. A constant time trigger should be there as well. Event instances should track how many times they are allowed to fire and how many times they have fired.
 * Methods needed:
  1. ~~lookAround() - pulls in the description of the room, it's items, it's doors, and any monsters and returns a formatted version for display : belongs in Player~~
- 2. dropItem(Item) - drop an item in Player inventory and add it to Room inventory : belongs in Player
- 3. unlockDoor(Item) - check the validKeys list of the Door for the Item presented as a key and unlocks if valid and returns feedback: belongs in Door
+ 2. ~~dropItem(Item) - drop an item in Player inventory and add it to Room inventory : belongs in Player~~
+ 3. ~~unlockDoor(Item putativeKey) - check the validKeys list of the Door for the Item presented as a key and unlocks if valid and returns feedback: belongs in Door~~
+ 4. tryToUnlockDoor(String itemSearchString, Door doorToUnlock) - this needs to take player string input and find the Item assoicated with that string if any exists in the curent context then call Door.unlockDoor to try to do the work, outputs the results to the player : belongs in Player

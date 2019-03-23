@@ -8,9 +8,6 @@ public class Player
 {
 
 public Room currentRoom {get; set;}
-
-//public List<string> playerInventory {get; set;}
-
 public List<Item> playerInventory { get; set; } = new List<Item>();
 
 public String name {get ; set;}
@@ -45,6 +42,27 @@ public Player(string customName)
     playerInventory.Add(item02);
     hitPoints = 100;
 
+}
+
+public void dropItem(String itemSearchString)
+{
+    Item itemToMove = null;            
+            // searches the Player inventory list of items for an item that has an alias matching the search term
+            foreach (Item item in this.playerInventory)
+            {
+                if (item.itemAliases.Contains(itemSearchString))
+                {
+                    itemToMove = item;
+                }
+            }
+
+            if (itemToMove != null)
+            {
+                playerInventory.Remove(itemToMove);
+                currentRoom.roomInventory.Add(itemToMove);
+                // maybe change context of the item here... need to think about best way to do that
+                Console.WriteLine("You hae dropped the " + itemToMove.itemName);
+            }
 }
 
 public void movePlayer(Int16 chosenDirection)
@@ -192,7 +210,6 @@ Item itemToMove = null;
                 }
             }
             // if a valid match was found above and we will remove it from the room and add it to the player only as long as the item can be picked up
-            
             
             if (itemToMove != null && itemToMove.canPickUp)
             {
