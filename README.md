@@ -25,3 +25,5 @@ An OOP Engine for Text Based Adventure Games
  2. ~~dropItem(Item) - drop an item in Player inventory and add it to Room inventory : belongs in Player~~
  3. ~~unlockDoor(Item putativeKey) - check the validKeys list of the Door for the Item presented as a key and unlocks if valid and returns feedback: belongs in Door~~
  4. tryToUnlockDoor(String itemSearchString, Door doorToUnlock) - this needs to take player string input and find the Item assoicated with that string if any exists in the curent context then call Door.unlockDoor to try to do the work, outputs the results to the player : belongs in Player
+ 
+ * Map generator, core path from start to finish using maze building algo (recursive with a stack to track where you've been), an array of rooms is needed... when thinking of sol'n think of doors as edges and rooms as nodes on a graph... activator.createinstance will be usefull for making Rooms and Doors... track core path rooms in sol'n to make sure subsequent steps don't make the dungeon unsolvalbe.
