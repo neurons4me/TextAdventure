@@ -24,3 +24,7 @@ TextAdventure.csproj
 obj/Debug/netcoreapp2.2/TextAdventure.assets.cache
 **bin/
 **obj/
+obj/Debug/netcoreapp2.2/TextAdventure.csproj.CoreCompileInputs.cache
+obj/Debug/netcoreapp2.2/TextAdventure.csproj.CoreCompileInputs.cache
+obj/TextAdventure.csproj.nuget.cache
+obj/TextAdventure.csproj.nuget.g.props
