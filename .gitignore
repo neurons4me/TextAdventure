@@ -21,3 +21,6 @@ bin/Debug/netcoreapp2.2/TextAdventure.deps.json
 bin/
 obj/
 TextAdventure.csproj
+obj/Debug/netcoreapp2.2/TextAdventure.assets.cache
+**bin/
+**obj/
