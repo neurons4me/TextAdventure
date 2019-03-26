@@ -17,3 +17,7 @@ bin/Debug/netcoreapp2.2/TextAdventure.pdb
 bin/Debug/netcoreapp2.2/TextAdventure.dll
 bin/Debug/netcoreapp2.2/TextAdventure.deps.json
 TextAdventure.csproj
+bin/Debug/netcoreapp2.2/TextAdventure.deps.json
+bin/
+obj/
+TextAdventure.csproj
