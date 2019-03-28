@@ -36,6 +36,8 @@ public Player(string customName)
 
     name = customName;
     Item item01 = new Item("rusty nail");
+    item01.canBeDropped = true;
+    item01.canBeDropped = false;
     Item item02 = new Item("soggy flannel hat");
 
     playerInventory.Add(item01);
@@ -44,25 +46,15 @@ public Player(string customName)
 
 }
 
-public void dropItem(String itemSearchString)
-{
-    Item itemToMove = null;            
-            // searches the Player inventory list of items for an item that has an alias matching the search term
-            foreach (Item item in this.playerInventory)
-            {
-                if (item.itemAliases.Contains(itemSearchString))
-                {
-                    itemToMove = item;
-                }
-            }
 
-            if (itemToMove != null)
-            {
-                playerInventory.Remove(itemToMove);
-                currentRoom.roomInventory.Add(itemToMove);
-                // maybe change context of the item here... need to think about best way to do that
-                Console.WriteLine("You hae dropped the " + itemToMove.itemName);
-            }
+public List<string> buildDirectionTips()
+{
+    List<string> outputList = new List<string>();
+    if (this.currentRoom.northDoor != null && this.currentRoom.northDoor.isHiddenFromSouth) {outputList.Add("NORTH");}
+    if (this.currentRoom.eastDoor != null && this.currentRoom.eastDoor.isHiddenFromWest) {outputList.Add("EAST");} 
+    if (this.currentRoom.southDoor != null && this.currentRoom.southDoor.isHiddenFromNorth) {outputList.Add("SOUTH");} 
+    if (this.currentRoom.westDoor != null && this.currentRoom.westDoor.isHiddenFromEast) {outputList.Add("WEST");}
+    return outputList;
 }
 
 public void movePlayer(Int16 chosenDirection)
@@ -213,27 +205,63 @@ Item itemToMove = null;
             
             if (itemToMove != null && itemToMove.canPickUp)
             {
-                if (itemToMove.canPickUp)
-                {
+                // Item exists in current context and can be taken
                 currentRoom.roomInventory.Remove(itemToMove);
                 this.playerInventory.Add(itemToMove);
-                Console.WriteLine("You have pocketed the " + itemToMove.itemName);
-                }
-                else
-                {
-                    Console.WriteLine("You can't pick that up.");
-                }
+                ItemResponse responseObject = new ItemResponse(1, itemToMove,this);
+                DisplayToConsole.displayItemResponse(responseObject);
+                
+            }
+            else if (itemToMove == null)
+            {
+                // Item does not exist in current context
+                ItemResponse responseObject = new ItemResponse(2, this);
+                DisplayToConsole.displayItemResponse(responseObject);
             }
             else
             {
-                Console.WriteLine("That thing is not here.");
+                // Item exists in current context but cannot be taken
+                ItemResponse responseObject = new ItemResponse(3, itemToMove,this);
+                DisplayToConsole.displayItemResponse(responseObject);
             }
 
+}
+public void dropItem(String itemSearchString)
+{
+    Item itemToMove = null;            
+            // searches the Player inventory list of items for an item that has an alias matching the search term
+            foreach (Item item in this.playerInventory)
+            {
+                if (item.itemAliases.Contains(itemSearchString))
+                {
+                    itemToMove = item;
+                }
+            }
+            if (itemToMove != null && itemToMove.canBeDropped)
+            {
+                // Item exists in current context and can be taken
+                playerInventory.Remove(itemToMove);
+                currentRoom.roomInventory.Add(itemToMove);
+                ItemResponse responseObject = new ItemResponse(10, itemToMove, this);
+                DisplayToConsole.displayItemResponse(responseObject);
+            }
+            else if (itemToMove == null)
+            {
+                // Item does not exist in current context
+                ItemResponse responseObject = new ItemResponse(11, itemToMove, this);
+                DisplayToConsole.displayItemResponse(responseObject);
+            }
+            else
+            {
+                // Item exists in current context but cannot be taken
+                ItemResponse responseObject = new ItemResponse(12, itemToMove, this);
+                DisplayToConsole.displayItemResponse(responseObject);
+            }
 }
 
 public String lookAround()
 // TODO needs to gracefully handle null objects
-// TODO needs better formatting for the output
+// TODO needs to return a responseObject for handling by DisplayToConsole
 
 {
     String itemDescriptions = "";

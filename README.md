@@ -27,3 +27,6 @@ An OOP Engine for Text Based Adventure Games
  4. tryToUnlockDoor(String itemSearchString, Door doorToUnlock) - this needs to take player string input and find the Item assoicated with that string if any exists in the curent context then call Door.unlockDoor to try to do the work, outputs the results to the player : belongs in Player
  
  * Map generator, core path from start to finish using maze building algo (recursive with a stack to track where you've been), an array of rooms is needed... when thinking of sol'n think of doors as edges and rooms as nodes on a graph... activator.createinstance will be usefull for making Rooms and Doors... track core path rooms in sol'n to make sure subsequent steps don't make the dungeon unsolvalbe.
+
+* Most items are not null safe. Will need to add null checks.
+* Item context descriptions can be used to add changing flavor to item descriptions. A Room could keep a list of context descriptions ready to apply to an item dropped in it, either by a player or at world gen time.

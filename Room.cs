@@ -13,6 +13,7 @@ public Door southDoor {get; set;}
 public Door westDoor {get; set;}
 public List<Item> roomInventory { get; set; } = new List<Item>();
 public string roomDescription {get;set;}
+public List<String> smallItemContexts {get; set;}
 
 public Room(string description)
 {
@@ -45,6 +46,7 @@ private Int16 doorCount()
 }
 
 public String combinedDoorsDescription()
+// TODO refactor to take advantage of DisplayToConsole
 {
     String outputString = "";
     if (this.northDoor != null && this.northDoor.isHiddenFromSouth != true)
