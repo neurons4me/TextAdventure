@@ -89,6 +89,9 @@ namespace TextAdventure
         while (stayInMainLoop)
         {
             
+            // Console.Clear();
+            Console.WriteLine("══════════════════");
+            Console.WriteLine("What do you want to do?");
             string playerInput = Console.ReadLine();
 
             // rudimentary parsing for interactive testing purpose
@@ -96,6 +99,7 @@ namespace TextAdventure
             // a parsing static function or two or three or ten would be the better way to go
             // breaking up input into tokens to be parsed like a command line parses arguments and options
             
+
             if (playerInput == "go north")
             {
             playerOne.movePlayer(1);
@@ -124,6 +128,7 @@ namespace TextAdventure
             {
             Console.WriteLine(playerOne.lookAround());
             }
+
         
         
         

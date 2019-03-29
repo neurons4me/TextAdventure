@@ -47,6 +47,9 @@ private Int16 doorCount()
 
 public String combinedDoorsDescription()
 // TODO refactor to take advantage of DisplayToConsole
+// the responseObject should not be passed from Room directly
+// to keep things clean only direct actors should call Display layer (Player, Monster, and Event classes)
+// this method can stay here but should be called from Player
 {
     String outputString = "";
     if (this.northDoor != null && this.northDoor.isHiddenFromSouth != true)

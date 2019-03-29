@@ -5,6 +5,8 @@ namespace TextAdventure
 {
     public class DisplayToConsole
     {
+        // Can set the console window size with Console.SetWindowSize()
+
 
         public static void displayItemResponse (ItemResponse responseObject)
         {
