@@ -9,10 +9,21 @@ namespace TextAdventure
         // Can set the console window size with Console.SetWindowSize()
         public static void initDisplay()
         {
+            try
+            {
             Console.SetWindowSize(120, 40);
             Console.SetBufferSize(120, 40);
             Console.ForegroundColor = (ConsoleColor)0;
             Console.BackgroundColor = (ConsoleColor)0;
+                
+            }
+            catch (System.PlatformNotSupportedException)
+            {
+            Console.WriteLine("Can not automatically set window size in linux. Please set your console to 120 wide by 40 tall.");
+            Console.WriteLine("Press enter when ready");
+            Console.ReadLine();
+            
+            }
             for (int i = 0; i <= 40; i++)
             {
                 Console.WriteLine("");
