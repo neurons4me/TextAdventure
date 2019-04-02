@@ -86,10 +86,11 @@ namespace TextAdventure
 
         bool stayInMainLoop = true;
 
+        DisplayToConsole.initDisplay();
+        
+
         while (stayInMainLoop)
         {
-            
-            // Console.Clear();
             Console.WriteLine("══════════════════");
             Console.WriteLine("What do you want to do?");
             string playerInput = Console.ReadLine();

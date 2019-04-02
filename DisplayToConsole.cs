@@ -6,7 +6,41 @@ namespace TextAdventure
     public class DisplayToConsole
     {
         // Can set the console window size with Console.SetWindowSize()
+        public static void initDisplay()
+        {
+            Console.SetWindowSize(120, 40);
+            Console.SetBufferSize(120, 40);
+            Console.Clear();
+            Console.Title = "Text Adventure";
+        }
 
+        public static String wrapText(string textToWrap, Int16 charWrapValue)
+        {
+            string newLine = Environment.NewLine;
+            // insert newline at the closest word before charWrapValue characters to the line
+            String[] splitString = textToWrap.Split();
+            String outputString = "";
+            int charCounter = 0;
+            foreach (string word in splitString)
+            {
+                charCounter += word.Length + 1;
+
+                if (charCounter >= charWrapValue)
+                {
+                    charCounter = word.Length;
+                    outputString += newLine;
+                    outputString += word;
+                    outputString += " ";
+                }
+                else
+                {
+                    outputString += word;
+                    outputString += " ";
+                }
+            }
+             
+            return outputString;
+        }
 
         public static void displayItemResponse (ItemResponse responseObject)
         {
