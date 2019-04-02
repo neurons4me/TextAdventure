@@ -12,6 +12,7 @@ namespace TextAdventure
 
             // temporary builders for the first test rooms
             // TODO all of this setup needs to go in a factory method eventually
+            // TODO once the properties to include are fairly stable move these details to an external file for perisistance
             
             Item item01 = new Item("hand grenade");
             Item item02 = new Item("moldy bread");
@@ -72,26 +73,17 @@ namespace TextAdventure
             DoorFour.isLockedFromNorth = true;
             DoorFour.description = "A magical shimmering door";
 
-            //Room currentRoom = RoomOne;
-
             // Set start room for player
             playerOne.currentRoom = RoomOne;
 
             // Start the main game logic loop here
 
-
-            // playerOne.takeItem("moldy bread");
-
-            // playerOne.movePlayer(1);
-
         bool stayInMainLoop = true;
 
-        DisplayToConsole.initDisplay();
-        
+        DisplayToConsole.titleScreen();
 
         while (stayInMainLoop)
         {
-            Console.WriteLine("══════════════════");
             Console.WriteLine("What do you want to do?");
             string playerInput = Console.ReadLine();
 

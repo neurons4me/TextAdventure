@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace TextAdventure
 {
@@ -10,8 +11,31 @@ namespace TextAdventure
         {
             Console.SetWindowSize(120, 40);
             Console.SetBufferSize(120, 40);
+            Console.ForegroundColor = (ConsoleColor)0;
+            Console.BackgroundColor = (ConsoleColor)0;
+            for (int i = 0; i <= 40; i++)
+            {
+                Console.WriteLine("");
+            }
             Console.Clear();
             Console.Title = "Text Adventure";
+        }
+
+        public static void titleScreen()
+        {
+            initDisplay();
+            List<String> titleScreenLines = new List<String> {"╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║               ┌──────────────────────────────────────────────────────────────────────────────────────┐               ║","║               │                                                                                      │               ║","║               │                     Escape the Dungeon: A Text Adventure Game                        │               ║","║               │                                Written and Designed by                               │               ║","║               │                                       Adam McDaniel                                  │               ║","║               │                                                                                      │               ║","║               └──────────────────────────────────────────────────────────────────────────────────────┘               ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║                                                                                                                      ║","║ Hit Enter When Ready                                                                                                 ║","╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝"};
+            foreach (String line in titleScreenLines)
+            {
+            Console.BackgroundColor = (ConsoleColor)8;
+            Console.ForegroundColor = (ConsoleColor)15;
+            Console.Write(line);
+            Thread.Sleep(100);
+            }
+            Console.ReadLine();
+            Console.Clear();
+
+
         }
 
         public static String wrapText(string textToWrap, Int16 charWrapValue)
